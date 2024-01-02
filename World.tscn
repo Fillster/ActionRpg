@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://dpsitfrn6f8ff"]
+
+[ext_resource type="Script" path="res://World.gd" id="1_j85mq"]
+[ext_resource type="PackedScene" uid="uid://duekjktujfttt" path="res://World/bush.tscn" id="2_1dekg"]
+[ext_resource type="Texture2D" uid="uid://cgjkjhxkasasb" path="res://World/Bush.png" id="2_eqwku"]
+[ext_resource type="PackedScene" uid="uid://b6rm51sn362pi" path="res://Player.tscn" id="3_8q6yl"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b8rtd"]
+texture = ExtResource("2_eqwku")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_7b02t"]
+tile_size = Vector2i(32, 32)
+sources/1 = SubResource("TileSetAtlasSource_b8rtd")
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_j85mq")
+PlayerScene = ExtResource("3_8q6yl")
+
+[node name="TileMap" type="TileMap" parent="."]
+y_sort_enabled = true
+tile_set = SubResource("TileSet_7b02t")
+format = 2
+layer_0/name = "Bush"
+layer_0/y_sort_enabled = true
+layer_0/tile_data = PackedInt32Array(65537, 1, 0, 65538, 1, 0, 65539, 1, 0, 65541, 1, 0, 65542, 1, 0, 65543, 1, 0, 65544, 1, 0)
+
+[node name="Bush2" parent="TileMap" instance=ExtResource("2_1dekg")]
+position = Vector2(147, 156)
+
+[node name="Bush" parent="TileMap" instance=ExtResource("2_1dekg")]
+position = Vector2(290, 114)
